@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity()
     lateinit var EditNamePlayer2:EditText
     lateinit var ButtonStart: Button
 
-    fun VerifNomJoueur() // Permet la désactivation du bouton start, si les nom des joueurs ne sont pas saisie
+    fun VerifNomJoueur() // Permet la désactivation du bouton start, si les noms des joueurs ne sont pas saisie
     {
         if (!(EditNamePlayer1.text.isEmpty()) && !(EditNamePlayer2.text.isEmpty()))
         {
@@ -49,9 +49,9 @@ class MainActivity : AppCompatActivity()
 
         // Passe à l'activité suivante avec les noms des joueurs
         ButtonStart.setOnClickListener {
-            val monIntent :Intent = Intent(this,MorpionActivity::class.java).apply {
-                putExtra("Joueur1",EditNamePlayer1.text.toString())
-                putExtra("Joueur2",EditNamePlayer2.text.toString())
+           val monIntent :Intent = Intent(this,MorpionActivity::class.java).apply {
+               putExtra("Joueur1",EditNamePlayer1.text.toString())
+               putExtra("Joueur2",EditNamePlayer2.text.toString())
             }
             startActivity(monIntent)
         }
