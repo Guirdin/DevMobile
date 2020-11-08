@@ -4,9 +4,10 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 
-class Joueur  (var nom:String, var symbole: Drawable)
+class JoueurActivity(var nom:String, var symbole: Drawable?) : AppCompatActivity()
 {
     lateinit var Cases : Array<Button>
     lateinit var case1 : Button
@@ -19,11 +20,9 @@ class Joueur  (var nom:String, var symbole: Drawable)
     lateinit var case8 : Button
     lateinit var case9 : Button
     lateinit var AvertisseurJoueurEnCours : TextView
-    lateinit var User:ArrayList<Joueur>
     lateinit var buttonRelancer: Button
-    var NumeroDuJoueurEnCour = 0
 
-    lateinit var tableau: Array<Int>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,4 +50,5 @@ class Joueur  (var nom:String, var symbole: Drawable)
             initPartie(plateau)
         }
     }
+
 }

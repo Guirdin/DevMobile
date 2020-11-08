@@ -11,63 +11,66 @@ import kotlin.random.Random
 class MorpionActivity: AppCompatActivity()
 {
     lateinit var buttonRelancer: Button
-    var NumeroDuJoueurEnCour: Int = 0
+    var NumeroDuJoueurEnCour = 0
+    lateinit var User:ArrayList<JoueurActivity>
+    lateinit var tableau: Array<Int>
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.morpion)
-    }
 
-    fun initPartie(plateau:ArrayList<Button>)
-    {
-        buttonRelancer.isEnabled = false
-        User = initOrdreJoueur (intent.getStringExtra("Joueur1"),intent.getStringExtra("Joueur2"))
-        AlertJoueurEnCours.text = "c'est au tour de "+User[NumeroDuJoueurEnCour].nom
-        var tableau = arrayOf(2, 2, 2, 2, 2, 2, 2, 2, 2)
+        fun initPartie(plateau:ArrayList<Button>)
+        {
+            buttonRelancer.isEnabled = false
+            User = initOrdreJoueur (intent.getStringExtra("Joueur1"),intent.getStringExtra("Joueur2"))
+            AlertJoueurEnCours.text = "c'est au tour de "+User[NumeroDuJoueurEnCour].nom
+            tableau = arrayOf(2, 2, 2, 2, 2, 2, 2, 2, 2)
 
-        loop@ plateau.forEach{
-            it.setBackgroundDrawable(null)
-            it.isClickable = true
+            loop@ plateau.forEach{
+                it.setBackgroundDrawable(null)
+                it.isClickable = true
+            }
+            tourDeJeu(plateau)
         }
-        tourDeJeu(plateau)
     }
 
-    fun initialisationOrdreJoueur(pseudo1:String,pseudo2:String): ArrayList<Joueur> {
+    fun initOrdreJoueur (pseudo1:String,pseudo2:String): ArrayList<JoueurActivity> {
         //val rand = Random()
         val nbAleatoire = Random.nextInt(0,2)
 
         if (nbAleatoire === 1)
         {
             val joueur1 = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                Joueur(pseudo2,getDrawable(R.drawable.o))
+                JoueurActivity(pseudo2,getDrawable(R.drawable.o))
             } else {
                 TODO("VERSION.SDK_INT < LOLLIPOP")
             }
             val joueur2 = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                Joueur(pseudo1,getDrawable(R.drawable.x))
+                JoueurActivity(pseudo1,getDrawable(R.drawable.x))
             } else {
                 TODO("VERSION.SDK_INT < LOLLIPOP")
             }
-            val Joueurs = arrayListOf<Joueur>(joueur1,joueur2)
+            val Joueurs = arrayListOf<JoueurActivity>(joueur1,joueur2)
             return Joueurs
         }else
         {
             val joueur1 = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                Joueur(pseudo2,getDrawable(R.drawable.o))
+                JoueurActivity(pseudo2,getDrawable(R.drawable.o))
             } else {
                 TODO("VERSION.SDK_INT < LOLLIPOP")
             }
             val joueur2 = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                Joueur(pseudo1,getDrawable(R.drawable.x))
+                JoueurActivity(pseudo1,getDrawable(R.drawable.x))
             } else {
                 TODO("VERSION.SDK_INT < LOLLIPOP")
             }
-            val Joueurs = arrayListOf<Joueur>(joueur1,joueur2)
+            val Joueurs = arrayListOf<JoueurActivity>(joueur1,joueur2)
             return Joueurs
         }
-
     }
+
+
 
     fun tourDeJeu(plateau:ArrayList<Button>)
     {
@@ -79,7 +82,7 @@ class MorpionActivity: AppCompatActivity()
                 it.isClickable = false
                 remplirPlateau(it as Button)
                 nbCaseRemplis++
-                if (!verification3MemeSymbole()){
+                if (!verif3MemeSymbole()){
                     if (NumeroDuJoueurEnCour === 0)
                     {
                         NumeroDuJoueurEnCour=1
@@ -154,4 +157,8 @@ class MorpionActivity: AppCompatActivity()
         { return true }
         return false
     }
+
+
+
+
 }
