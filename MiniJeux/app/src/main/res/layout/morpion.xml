@@ -126,4 +126,23 @@
             android:layout_weight="30"
             android:id="@+id/button9"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:paddingBottom="20dp"
+        android:layout_weight="1">
+
+        <Button
+            android:text="Relancer la partie"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:textColor="?attr/colorBackgroundFloating"
+            android:background="@color/articlecolor"
+            android:id="@+id/buttonRelancer"/>
+    </LinearLayout>
 </LinearLayout>
