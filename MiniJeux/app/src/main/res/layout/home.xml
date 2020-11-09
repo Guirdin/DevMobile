@@ -28,68 +28,71 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingHorizontal="20dp"
+        android:layout_height="713dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
 
-        android:layout_weight="1">
+        android:paddingHorizontal="20dp">
+
         <TextView
+            android:id="@+id/TitlePlayer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:paddingTop="10dp"
             android:text="Player 1 :"
-            android:paddingTop="10dp"
-            android:layout_width="match_parent"
-            android:textStyle="bold"
             android:textColor="?attr/colorBackgroundFloating"
-            android:fontFamily="sans-serif"
-            android:layout_height="wrap_content"
-            android:id="@+id/TitlePlayer1"/>
+            android:textStyle="bold" />
+
         <EditText
+            android:id="@+id/editNamePlayer1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:paddingHorizontal="20dp"
-            android:maxLength="9"
             android:background="@color/white"
             android:ems="10"
-            android:id="@+id/editNamePlayer1"/>
+            android:inputType="textPersonName"
+            android:maxLength="9"
+            android:paddingHorizontal="20dp" />
 
         <TextView
-            android:text="Player 2 :"
+            android:id="@+id/TitlePlayer2"
             android:layout_width="match_parent"
-            android:textStyle="bold"
-            android:textColor="?attr/colorBackgroundFloating"
-            android:paddingTop="10dp"
+            android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-            android:layout_height="wrap_content"
-            android:id="@+id/TitlePlayer2"/>
+            android:paddingTop="10dp"
+            android:text="Player 2 :"
+            android:textColor="?attr/colorBackgroundFloating"
+            android:textStyle="bold" />
+
         <EditText
+            android:id="@+id/editNamePlayer2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:maxLength="9"
-            android:paddingHorizontal="20dp"
             android:background="@color/white"
             android:ems="10"
-            android:id="@+id/editNamePlayer2"/>
+            android:inputType="textPersonName"
+            android:maxLength="9"
+            android:paddingHorizontal="20dp" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:gravity="bottom"
-        android:paddingBottom="20dp"
-        android:layout_weight="1">
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
 
         <Button
-            android:text="Start"
-            android:layout_gravity="center"
+            android:id="@+id/buttonStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"
-            android:textColor="?attr/colorBackgroundFloating"
+            android:layout_gravity="center"
             android:background="@color/articlecolor"
-            android:id="@+id/buttonStart"/>
+            android:enabled="false"
+            android:text="Start"
+            android:textColor="?attr/colorBackgroundFloating" />
     </LinearLayout>
 
 
