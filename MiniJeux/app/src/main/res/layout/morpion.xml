@@ -50,7 +50,7 @@
                 android:layout_height="35dp"
                 android:gravity="center"
                 android:text="Bienvenue dans le jeu du Morpion"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:layout_alignParentBottom="true"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -183,15 +183,14 @@
             android:layout_weight="1"
             android:gravity="bottom"
             android:orientation="vertical"
-            android:paddingBottom="60dp">
+            android:paddingBottom="20dp">
 
             <Button
-                android:id="@+id/buttonRelancer"
+                android:id="@+id/boutonRelancer"
                 android:layout_width="166dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/articlecolor"
-                android:enabled="false"
                 android:text="Relancer la partie"
                 android:textColor="?attr/colorBackgroundFloating" />
         </LinearLayout>

@@ -1,5 +1,6 @@
 package com.muller.minijeux
 
+import android.util.Log  // Log.v("exemple", "coucou")
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
