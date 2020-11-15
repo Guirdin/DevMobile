@@ -1,5 +1,6 @@
 package com.muller.minijeux
 
+import android.util.Log
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +8,6 @@ import kotlinx.android.synthetic.main.morpion.*
 
 class MorpionActivity: AppCompatActivity()
 {
-
     lateinit var case1 : Button
     lateinit var case2 : Button
     lateinit var case3 : Button
@@ -17,9 +17,11 @@ class MorpionActivity: AppCompatActivity()
     lateinit var case7 : Button
     lateinit var case8 : Button
     lateinit var case9 : Button
+//    val cases : Array<Button> = arrayOf(case1,case2,case3,case4,case5,case6,case7,case8,case9)
 
     var Joueur = 0
     var nb_tour = 0;
+    val imgJoueur = arrayOf(R.drawable.o, R.drawable.x)
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -37,57 +39,50 @@ class MorpionActivity: AppCompatActivity()
         case8 = findViewById(R.id.button8)
         case9 = findViewById(R.id.button9)
 
+        Tour_De_Jeu()
 
         case1.setOnClickListener{
-            case1.setBackgroundResource(R.drawable.o)
-            case1.setBackgroundResource(R.drawable.x)
+            it.setBackgroundResource(imgJoueur[Joueur]);
             Tour_De_Jeu()
         }
+
         case2.setOnClickListener{
-            case1.setBackgroundResource(R.drawable.o)
-            case1.setBackgroundResource(R.drawable.x)
+            it.setBackgroundResource(imgJoueur[Joueur]);
             Tour_De_Jeu()
         }
 
         case3.setOnClickListener{
-            case1.setBackgroundResource(R.drawable.o)
-            case1.setBackgroundResource(R.drawable.x)
+            it.setBackgroundResource(imgJoueur[Joueur]);
             Tour_De_Jeu()
         }
 
         case4.setOnClickListener{
-            case1.setBackgroundResource(R.drawable.o)
-            case1.setBackgroundResource(R.drawable.x)
+            it.setBackgroundResource(imgJoueur[Joueur]);
             Tour_De_Jeu()
         }
 
         case5.setOnClickListener{
-            case1.setBackgroundResource(R.drawable.o)
-            case1.setBackgroundResource(R.drawable.x)
+            it.setBackgroundResource(imgJoueur[Joueur]);
             Tour_De_Jeu()
         }
 
         case6.setOnClickListener{
-            case1.setBackgroundResource(R.drawable.o)
-            case1.setBackgroundResource(R.drawable.x)
+            it.setBackgroundResource(imgJoueur[Joueur]);
             Tour_De_Jeu()
         }
 
         case7.setOnClickListener{
-            case1.setBackgroundResource(R.drawable.o)
-            case1.setBackgroundResource(R.drawable.x)
+            it.setBackgroundResource(imgJoueur[Joueur]);
             Tour_De_Jeu()
         }
 
         case8.setOnClickListener{
-            case1.setBackgroundResource(R.drawable.o)
-            case1.setBackgroundResource(R.drawable.x)
+            it.setBackgroundResource(imgJoueur[Joueur]);
             Tour_De_Jeu()
         }
 
         case9.setOnClickListener{
-            case1.setBackgroundResource(R.drawable.o)
-            case1.setBackgroundResource(R.drawable.x)
+            it.setBackgroundResource(imgJoueur[Joueur]);
             Tour_De_Jeu()
         }
 
@@ -101,12 +96,18 @@ class MorpionActivity: AppCompatActivity()
     {
         nb_tour++;
         Joueur = if (nb_tour%2 == 0){
-            2;
-        } else {
             1;
+        } else {
+            0;
         }
     }
 
+//    fun FinDuJeu()
+//    {
+//        if {
+//
+//        }
+//    }
 
 
 }
