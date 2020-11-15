@@ -1,89 +1,123 @@
 package com.muller.minijeux
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.morpion.*
 
 class MorpionActivity: AppCompatActivity()
 {
-    lateinit var case1 : Button
-    lateinit var case2 : Button
-    lateinit var case3 : Button
-    lateinit var case4 : Button
-    lateinit var case5 : Button
-    lateinit var case6 : Button
-    lateinit var case7 : Button
-    lateinit var case8 : Button
-    lateinit var case9 : Button
-//    val cases : Array<Button> = arrayOf(case1,case2,case3,case4,case5,case6,case7,case8,case9)
+    private var case1 : Int = 2
+    private var case2 : Int = 2
+    private var case3 : Int = 2
+    private var case4 : Int = 2
+    private var case5 : Int = 2
+    private var case6 : Int = 2
+    private var case7 : Int = 2
+    private var case8 : Int = 2
+    private var case9 : Int = 2
 
-    var Joueur = 0
-    var nb_tour = 0;
-    val imgJoueur = arrayOf(R.drawable.o, R.drawable.x)
+    private var joueur = 0
+    private var nbTour = 0
+    private val imgJoueur = arrayOf(R.drawable.o, R.drawable.x)
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.morpion)
 
-        //initialisation de tous les boutons
-        case1 = findViewById(R.id.button)
-        case2 = findViewById(R.id.button2)
-        case3 = findViewById(R.id.button3)
-        case4 = findViewById(R.id.button4)
-        case5 = findViewById(R.id.button5)
-        case6 = findViewById(R.id.button6)
-        case7 = findViewById(R.id.button7)
-        case8 = findViewById(R.id.button8)
-        case9 = findViewById(R.id.button9)
+        tourDeJeu()
 
-        Tour_De_Jeu()
+        button.setOnClickListener{
+            it.setBackgroundResource(imgJoueur[joueur])
+            case1 = if (joueur == 0) {
+                0
+            } else {
+                1
+            }
 
-        case1.setOnClickListener{
-            it.setBackgroundResource(imgJoueur[Joueur]);
-            Tour_De_Jeu()
+            tourDeJeu()
         }
 
-        case2.setOnClickListener{
-            it.setBackgroundResource(imgJoueur[Joueur]);
-            Tour_De_Jeu()
+        button2.setOnClickListener{
+            it.setBackgroundResource(imgJoueur[joueur])
+            case2 = if (joueur == 0) {
+                0
+            } else {
+                1
+            }
+            tourDeJeu()
         }
 
-        case3.setOnClickListener{
-            it.setBackgroundResource(imgJoueur[Joueur]);
-            Tour_De_Jeu()
+        button3.setOnClickListener{
+            it.setBackgroundResource(imgJoueur[joueur])
+            case3 = if (joueur == 0) {
+                0
+            } else {
+                1
+            }
+            tourDeJeu()
         }
 
-        case4.setOnClickListener{
-            it.setBackgroundResource(imgJoueur[Joueur]);
-            Tour_De_Jeu()
+        button4.setOnClickListener{
+            it.setBackgroundResource(imgJoueur[joueur])
+            case4 = if (joueur == 0) {
+                0
+            } else {
+                1
+            }
+            tourDeJeu()
         }
 
-        case5.setOnClickListener{
-            it.setBackgroundResource(imgJoueur[Joueur]);
-            Tour_De_Jeu()
+        button5.setOnClickListener{
+            it.setBackgroundResource(imgJoueur[joueur])
+            case5 = if (joueur == 0) {
+                0
+            } else {
+                1
+            }
+            tourDeJeu()
         }
 
-        case6.setOnClickListener{
-            it.setBackgroundResource(imgJoueur[Joueur]);
-            Tour_De_Jeu()
+        button6.setOnClickListener{
+            it.setBackgroundResource(imgJoueur[joueur])
+            case6 = if (joueur == 0) {
+                0
+            } else {
+                1
+            }
+            tourDeJeu()
         }
 
-        case7.setOnClickListener{
-            it.setBackgroundResource(imgJoueur[Joueur]);
-            Tour_De_Jeu()
+        button7.setOnClickListener{
+            it.setBackgroundResource(imgJoueur[joueur])
+            case7 = if (joueur == 0) {
+                0
+            } else {
+                1
+            }
+            tourDeJeu()
         }
 
-        case8.setOnClickListener{
-            it.setBackgroundResource(imgJoueur[Joueur]);
-            Tour_De_Jeu()
+        button8.setOnClickListener{
+            it.setBackgroundResource(imgJoueur[joueur])
+            case8 = if (joueur == 0) {
+                0
+            } else {
+                1
+            }
+            tourDeJeu()
         }
 
-        case9.setOnClickListener{
-            it.setBackgroundResource(imgJoueur[Joueur]);
-            Tour_De_Jeu()
+        button9.setOnClickListener{
+            it.setBackgroundResource(imgJoueur[joueur])
+            case9 = if (joueur == 0) {
+                0
+            } else {
+                1
+            }
+            tourDeJeu()
         }
 
         boutonRelancer.setOnClickListener {
@@ -92,22 +126,45 @@ class MorpionActivity: AppCompatActivity()
 
     }
 
-    fun Tour_De_Jeu()
+    private fun tourDeJeu()
     {
-        nb_tour++;
-        Joueur = if (nb_tour%2 == 0){
-            1;
+        checkWin()
+        nbTour++
+        joueur = if (nbTour%2 == 0){
+            1
         } else {
-            0;
+            0
         }
     }
 
-//    fun FinDuJeu()
-//    {
-//        if {
-//
-//        }
-//    }
+    @SuppressLint("SetTextI18n")
+    fun checkWin()
+    {
+        if (case1 == 0 && case2 == 0 && case3 == 0 || case1 == 1 && case2 == 1 && case3 == 1 )
+        {
+            auTourDe.text = "Vous avez gagner"
+        }
+        if (case1 == 0 && case4 == 0 && case7 == 0 || case1 == 1 && case4 == 1 && case7 == 1 )
+        {
+            auTourDe.text = "Vous avez gagner"
+        }
+        if (case1 == 0 && case5 == 0 && case9 == 0 || case1 == 1 && case5 == 1 && case9 == 1 )
+        {
+            auTourDe.text = "Vous avez gagner"
+        }
+        if (case2 == 0 && case5 == 0 && case8 == 0 || case2 == 1 && case5 == 1 && case8 == 1 )
+        {
+            auTourDe.text = "Vous avez gagner"
+        }
+        if (case3 == 0 && case6 == 0 && case9 == 0 || case3 == 1 && case6 == 1 && case9 == 1 )
+        {
+            auTourDe.text = "Vous avez gagner"
+        }
+        if (case3 == 0 && case5 == 0 && case7 == 0 || case3 == 1 && case5 == 1 && case7 == 1 )
+        {
+            auTourDe.text = "Vous avez gagner"
+        }
+    }
 
 
 }
