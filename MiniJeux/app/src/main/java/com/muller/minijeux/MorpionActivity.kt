@@ -21,11 +21,17 @@ class MorpionActivity: AppCompatActivity()
     private var joueur = 0
     private var nbTour = 0
     private val imgJoueur = arrayOf(R.drawable.o, R.drawable.x)
+    private var nomJoueur1 = "J1"
+    private var nomJoueur2 = "J2"
+    private lateinit var nomJoueur: String
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.morpion)
+
+//        bundle val: Bundle? = intent.extras
+//        var player = bundle.get ( "id_value" )
 
         tourDeJeu()
 
@@ -129,40 +135,30 @@ class MorpionActivity: AppCompatActivity()
     private fun tourDeJeu()
     {
         checkWin()
-        nbTour++
-        joueur = if (nbTour%2 == 0){
-            1
-        } else {
-            0
+        if (nbTour%2 == 0)
+        {
+            joueur = 0
+            nomJoueur = nomJoueur1
         }
+        else
+        {
+            joueur = 1
+            nomJoueur = nomJoueur2
+        }
+        nbTour++
     }
 
     @SuppressLint("SetTextI18n")
     fun checkWin()
     {
-        if (case1 == 0 && case2 == 0 && case3 == 0 || case1 == 1 && case2 == 1 && case3 == 1 )
+        if (case1 == 0 && case2 == 0 && case3 == 0 || case1 == 1 && case2 == 1 && case3 == 1 ||
+            case1 == 0 && case4 == 0 && case7 == 0 || case1 == 1 && case4 == 1 && case7 == 1 ||
+            case1 == 0 && case5 == 0 && case9 == 0 || case1 == 1 && case5 == 1 && case9 == 1 ||
+            case2 == 0 && case5 == 0 && case8 == 0 || case2 == 1 && case5 == 1 && case8 == 1 ||
+            case3 == 0 && case6 == 0 && case9 == 0 || case3 == 1 && case6 == 1 && case9 == 1 ||
+            case3 == 0 && case5 == 0 && case7 == 0 || case3 == 1 && case5 == 1 && case7 == 1)
         {
-            auTourDe.text = "Vous avez gagner"
-        }
-        if (case1 == 0 && case4 == 0 && case7 == 0 || case1 == 1 && case4 == 1 && case7 == 1 )
-        {
-            auTourDe.text = "Vous avez gagner"
-        }
-        if (case1 == 0 && case5 == 0 && case9 == 0 || case1 == 1 && case5 == 1 && case9 == 1 )
-        {
-            auTourDe.text = "Vous avez gagner"
-        }
-        if (case2 == 0 && case5 == 0 && case8 == 0 || case2 == 1 && case5 == 1 && case8 == 1 )
-        {
-            auTourDe.text = "Vous avez gagner"
-        }
-        if (case3 == 0 && case6 == 0 && case9 == 0 || case3 == 1 && case6 == 1 && case9 == 1 )
-        {
-            auTourDe.text = "Vous avez gagner"
-        }
-        if (case3 == 0 && case5 == 0 && case7 == 0 || case3 == 1 && case5 == 1 && case7 == 1 )
-        {
-            auTourDe.text = "Vous avez gagner"
+            auTourDe.text = nomJoueur + " vous avez gagner"
         }
     }
 

@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
 
+
         // Liaison des variables aux éléments xml
         EditNamePlayer1 = findViewById(R.id.editNamePlayer1)
         EditNamePlayer2 = findViewById(R.id.editNamePlayer2)
