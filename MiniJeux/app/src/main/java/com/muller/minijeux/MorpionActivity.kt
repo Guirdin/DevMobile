@@ -3,8 +3,12 @@ package com.muller.minijeux
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.morpion.*
 
@@ -215,5 +219,24 @@ class MorpionActivity: AppCompatActivity() {
             boutonRetour.toggleVisibility()
             auTourDe.text = "Equality !"
         }
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.menu_morpion,menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        super.onOptionsItemSelected(item)
+        when (item?.itemId)
+        {
+            R.id.configuration -> { changerIcone() }
+            else -> { Toast.makeText(this,"action inconnue",Toast.LENGTH_LONG).show() }
+        }
+        return true
+    }
+    private fun changerIcone() {
+        startActivity(Intent(this@MorpionActivity, ListIconActivity::class.java))
     }
 }
