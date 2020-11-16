@@ -207,5 +207,13 @@ class MorpionActivity: AppCompatActivity() {
             auTourDe.text = "$nomJoueur won !"
 
         }
+        if (case1 != 2 && case2 != 2 && case3 != 2 && case4 != 2 &&
+            case5 != 2 && case6 != 2 && case7 != 2 && case8 != 2 && case9 != 2)
+        {
+            victoire = false
+            boutonRelancer.toggleVisibility()
+            boutonRetour.toggleVisibility()
+            auTourDe.text = "Equality !"
+        }
     }
 }
