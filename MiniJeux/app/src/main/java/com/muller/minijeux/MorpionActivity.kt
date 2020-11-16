@@ -3,12 +3,8 @@ package com.muller.minijeux
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-<<<<<<< Updated upstream
 import android.view.Menu
 import android.view.MenuItem
-=======
-import android.util.Log
->>>>>>> Stashed changes
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
