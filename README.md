@@ -1,7 +1,7 @@
 # Présentation du projet d'Android
  * C'est une application qui permet de jouer à un **morpion**, qui est un jeu tour par tour où son but est d'aligner, avant son adversaire, un même symbole horizontalement, verticalement ou diagonalement. Un joueur possède un seul symbole et ne peux le changer avant la fin de la partie.
 * Ce projet a été réalisé par : 
-> [MULLER Jimmy](https://github.com/Guirdin)
+> [MULLER Jimmy](https://github.com/Guirdin), 
 > [LIEUTAUD Céline](https://github.com/OphisDgn)
 
 # Technologies utilisées : 
@@ -72,7 +72,7 @@
 ### Changer son icône
 ![Changer son icône](https://github.com/Guirdin/DevMobile/blob/main/imgReadme/Screenshot_6.png)
 * Une fonctionnalité qui rencontre quelques erreurs est quand même présente, c'est celle de changer son icône. En effet, lors du démarrage du jeu, le joueur 1 a l'idée du rond et le deuxième a la croix. Cependant nous souhaitons pouvoir laisser la possibilité de changer son icône parmi les suivantes : 
-	 > Rond
-	 > Croix 
-	 > Triangle
+	 > Rond,
+	 > Croix,
+	 > Triangle,
 	 > Losange
