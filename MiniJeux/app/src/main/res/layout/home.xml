@@ -89,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@color/articlecolor"
+            android:background="@color/gray"
             android:enabled="false"
             android:text="Start"
             android:textColor="?attr/colorBackgroundFloating" />

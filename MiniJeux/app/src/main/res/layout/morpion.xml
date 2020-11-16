@@ -202,7 +202,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:background="@color/gray"
+                android:background="@color/articlecolor"
                 android:text="Back to menu"
                 android:textColor="?attr/colorBackgroundFloating"
                 android:visibility="invisible" />

@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity()
         if (!(EditNamePlayer1.text.isEmpty()) && !(EditNamePlayer2.text.isEmpty()))
         {
             buttonStart.isEnabled = true
+            buttonStart.setBackgroundResource(R.color.articlecolor)
         }
     }
 
