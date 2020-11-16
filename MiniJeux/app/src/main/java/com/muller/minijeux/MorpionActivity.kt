@@ -24,6 +24,7 @@ class MorpionActivity: AppCompatActivity() {
     private lateinit var nomJoueur: String
     private var joueur1: String? = ""
     private var joueur2: String? = ""
+    private var victoire : Boolean? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +40,7 @@ class MorpionActivity: AppCompatActivity() {
 
         tourDeJeu()
 
-        button.setOnClickListener {
+        button1.setOnClickListener {
             it.setBackgroundResource(imgJoueur[joueur])
             case1 = if (joueur == 0) {
                 0
@@ -146,29 +147,32 @@ class MorpionActivity: AppCompatActivity() {
     }
     @SuppressLint("SetTextI18n")
     private fun tourDeJeu() {
-        checkWin()
-        if (nbTour % 2 == 0) {
-            joueur = 0
-            nomJoueur = joueur1.toString()
-            auTourDe.text = "It's your turn to play $nomJoueur"
-        } else {
-            joueur = 1
-            nomJoueur = joueur2.toString()
-            auTourDe.text = "It's your turn to play $nomJoueur"
+        finDeJeu()
+        if (victoire == null)
+        {
+            if (nbTour % 2 == 0) {
+                joueur = 0
+                nomJoueur = joueur1.toString()
+                auTourDe.text = "It's your turn to play $nomJoueur"
+            } else {
+                joueur = 1
+                nomJoueur = joueur2.toString()
+                auTourDe.text = "It's your turn to play $nomJoueur"
+            }
         }
         nbTour++
     }
 
-    fun Button.toggleVisibility() {
-        if (visibility == Button.VISIBLE) {
-            visibility = Button.INVISIBLE
+    private fun Button.toggleVisibility() {
+        visibility = if (visibility == Button.VISIBLE) {
+            Button.INVISIBLE
         } else {
-            visibility = Button.VISIBLE
+            Button.VISIBLE
         }
     }
 
     @SuppressLint("SetTextI18n")
-    fun checkWin() {
+    fun finDeJeu() {
         if (
             case1 == 0 && case2 == 0 && case3 == 0 || case1 == 1 && case2 == 1 && case3 == 1 ||
             case1 == 0 && case4 == 0 && case7 == 0 || case1 == 1 && case4 == 1 && case7 == 1 ||
@@ -179,8 +183,10 @@ class MorpionActivity: AppCompatActivity() {
             case4 == 0 && case5 == 0 && case6 == 0 || case4 == 1 && case5 == 1 && case6 == 1 ||
             case7 == 0 && case8 == 0 && case9 == 0 || case7 == 1 && case8 == 1 && case9 == 1
         ) {
+            victoire = true
             boutonRelancer.toggleVisibility()
-            button.isEnabled = false
+            boutonRetour.toggleVisibility()
+            button1.isEnabled = false
             button2.isEnabled = false
             button3.isEnabled = false
             button4.isEnabled = false
@@ -190,7 +196,7 @@ class MorpionActivity: AppCompatActivity() {
             button8.isEnabled = false
             button9.isEnabled = false
 
-            auTourDe.setText("$nomJoueur won !")
+            auTourDe.text = "$nomJoueur won !"
 
         }
     }
