@@ -3,15 +3,18 @@ package com.muller.minijeux
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+<<<<<<< Updated upstream
 import android.view.Menu
 import android.view.MenuItem
+=======
+import android.util.Log
+>>>>>>> Stashed changes
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.morpion.*
-
 
 class MorpionActivity: AppCompatActivity() {
     private var case1: Int = 2
@@ -32,10 +35,10 @@ class MorpionActivity: AppCompatActivity() {
     private var joueur2: String? = ""
     private var victoire : Boolean? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.morpion)
+
         val intent = intent
         if (intent != null) {
             if (intent.hasExtra("EditNamePlayer1") && intent.hasExtra("EditNamePlayer2")) {
@@ -43,7 +46,6 @@ class MorpionActivity: AppCompatActivity() {
                 joueur2 = intent.getStringExtra("EditNamePlayer2")
             }
         }
-
         tourDeJeu()
 
         button1.setOnClickListener {
@@ -145,7 +147,6 @@ class MorpionActivity: AppCompatActivity() {
             tourDeJeu()
         }
 
-
         boutonRelancer.setOnClickListener {
             recreate()
         }
@@ -157,6 +158,7 @@ class MorpionActivity: AppCompatActivity() {
         })
 
     }
+    
     @SuppressLint("SetTextI18n")
     private fun tourDeJeu() {
         finDeJeu()
@@ -165,14 +167,14 @@ class MorpionActivity: AppCompatActivity() {
             if (nbTour % 2 == 0) {
                 joueur = 0
                 nomJoueur = joueur1.toString()
-                auTourDe.text = "It's your turn to play $nomJoueur"
             } else {
                 joueur = 1
                 nomJoueur = joueur2.toString()
-                auTourDe.text = "It's your turn to play $nomJoueur"
+
             }
+            auTourDe.text = "It's your turn to play $nomJoueur"
+            nbTour++
         }
-        nbTour++
     }
 
     private fun Button.toggleVisibility() {
@@ -185,31 +187,26 @@ class MorpionActivity: AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     fun finDeJeu() {
-        if (
-            case1 == 0 && case2 == 0 && case3 == 0 || case1 == 1 && case2 == 1 && case3 == 1 ||
+        if (case1 == 0 && case2 == 0 && case3 == 0 || case1 == 1 && case2 == 1 && case3 == 1 ||
             case1 == 0 && case4 == 0 && case7 == 0 || case1 == 1 && case4 == 1 && case7 == 1 ||
             case1 == 0 && case5 == 0 && case9 == 0 || case1 == 1 && case5 == 1 && case9 == 1 ||
             case2 == 0 && case5 == 0 && case8 == 0 || case2 == 1 && case5 == 1 && case8 == 1 ||
             case3 == 0 && case6 == 0 && case9 == 0 || case3 == 1 && case6 == 1 && case9 == 1 ||
             case3 == 0 && case5 == 0 && case7 == 0 || case3 == 1 && case5 == 1 && case7 == 1 ||
             case4 == 0 && case5 == 0 && case6 == 0 || case4 == 1 && case5 == 1 && case6 == 1 ||
-            case7 == 0 && case8 == 0 && case9 == 0 || case7 == 1 && case8 == 1 && case9 == 1
-        ) {
+            case7 == 0 && case8 == 0 && case9 == 0 || case7 == 1 && case8 == 1 && case9 == 1)
+        {
             victoire = true
             boutonRelancer.toggleVisibility()
             boutonRetour.toggleVisibility()
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
+
+            val boutons : Array<Button> = arrayOf(button1,button2,button3,button4,button5,button6,button7,button8,button9)
+            for (i in 0..8)
+            {
+                boutons[i].isEnabled = false
+            }
 
             auTourDe.text = "$nomJoueur won !"
-
         }
         else if (case1 != 2 && case2 != 2 && case3 != 2 && case4 != 2 &&
             case5 != 2 && case6 != 2 && case7 != 2 && case8 != 2 && case9 != 2)
@@ -217,6 +214,7 @@ class MorpionActivity: AppCompatActivity() {
             victoire = false
             boutonRelancer.toggleVisibility()
             boutonRetour.toggleVisibility()
+
             auTourDe.text = "Equality !"
         }
     }
