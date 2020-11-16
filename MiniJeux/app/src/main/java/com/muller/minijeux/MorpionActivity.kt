@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.morpion.*
 
@@ -34,6 +33,8 @@ class MorpionActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.morpion)
+
+
 
         val intent = intent
         if (intent != null) {
@@ -146,13 +147,11 @@ class MorpionActivity: AppCompatActivity() {
         boutonRelancer.setOnClickListener {
             recreate()
         }
-
         boutonRetour.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 startActivity(Intent(this@MorpionActivity, MainActivity::class.java))
             }
         })
-
     }
     
     @SuppressLint("SetTextI18n")
@@ -231,6 +230,15 @@ class MorpionActivity: AppCompatActivity() {
         return true
     }
     private fun changerIcone() {
-        startActivity(Intent(this@MorpionActivity, ListIconActivity::class.java))
+        val nameArray = resources.getStringArray(R.array.icon)
+        val imgArray = intArrayOf(R.drawable.o, R.drawable.x, R.drawable.t, R.drawable.l)
+        val listItem = arrayListOf<Items>(
+            Items(imgArray[0], nameArray[0]),
+            Items(imgArray[1], nameArray[1]),
+            Items(imgArray[2], nameArray[2]),
+            Items(imgArray[3], nameArray[3])
+        )
+        startActivity(Intent(this@MorpionActivity,ListAdapter(listItem)::class.java))
     }
+
 }

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MiniJeux</string>
+
+    <string-array name="icon">
+        <item>Rond</item>
+        <item>Croix</item>
+        <item>Triangle</item>
+        <item>Losange</item>
+    </string-array>
 </resources>
