@@ -51,11 +51,12 @@ class MainActivity : AppCompatActivity()
 
         // Passe à l'activité suivante avec les noms des joueurs
         ButtonStart.setOnClickListener {
-           val monIntent :Intent = Intent(this,MorpionActivity::class.java).apply {
-               putExtra("Joueur1",EditNamePlayer1.text.toString())
-               putExtra("Joueur2",EditNamePlayer2.text.toString())
-            }
-            startActivity(monIntent)
+            var player1: String = EditNamePlayer1.text.toString();
+            var player2: String = EditNamePlayer2.text.toString();
+            val intent = Intent(this@MainActivity,MorpionActivity::class.java)
+            intent.putExtra("EditNamePlayer1", player1)
+            intent.putExtra("EditNamePlayer2", player2)
+            startActivity(intent)
         }
     }
 }

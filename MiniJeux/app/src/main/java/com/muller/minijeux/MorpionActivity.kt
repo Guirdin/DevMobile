@@ -1,44 +1,45 @@
 package com.muller.minijeux
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import kotlinx.android.synthetic.main.home.*
 import kotlinx.android.synthetic.main.morpion.*
 
-class MorpionActivity: AppCompatActivity()
-{
-    private var case1 : Int = 2
-    private var case2 : Int = 2
-    private var case3 : Int = 2
-    private var case4 : Int = 2
-    private var case5 : Int = 2
-    private var case6 : Int = 2
-    private var case7 : Int = 2
-    private var case8 : Int = 2
-    private var case9 : Int = 2
+
+class MorpionActivity: AppCompatActivity() {
+    private var case1: Int = 2
+    private var case2: Int = 2
+    private var case3: Int = 2
+    private var case4: Int = 2
+    private var case5: Int = 2
+    private var case6: Int = 2
+    private var case7: Int = 2
+    private var case8: Int = 2
+    private var case9: Int = 2
 
     private var joueur = 0
     private var nbTour = 0
     private val imgJoueur = arrayOf(R.drawable.o, R.drawable.x)
-    private var nomJoueur1 = "J1"
-    private var nomJoueur2 = "J2"
     private lateinit var nomJoueur: String
+    private var joueur1: String? = ""
+    private var joueur2: String? = ""
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.morpion)
-
-//        bundle val: Bundle? = intent.extras
-//        var player = bundle.get ( "id_value" )
+        val intent = intent
+        if (intent != null) {
+            if (intent.hasExtra("EditNamePlayer1") && intent.hasExtra("EditNamePlayer2")) {
+                joueur1 = intent.getStringExtra("EditNamePlayer1")
+                joueur2 = intent.getStringExtra("EditNamePlayer2")
+            }
+        }
 
         tourDeJeu()
 
-        button.setOnClickListener{
+        button.setOnClickListener {
             it.setBackgroundResource(imgJoueur[joueur])
             case1 = if (joueur == 0) {
                 0
@@ -49,7 +50,7 @@ class MorpionActivity: AppCompatActivity()
             tourDeJeu()
         }
 
-        button2.setOnClickListener{
+        button2.setOnClickListener {
             it.setBackgroundResource(imgJoueur[joueur])
             case2 = if (joueur == 0) {
                 0
@@ -60,7 +61,7 @@ class MorpionActivity: AppCompatActivity()
             tourDeJeu()
         }
 
-        button3.setOnClickListener{
+        button3.setOnClickListener {
             it.setBackgroundResource(imgJoueur[joueur])
             case3 = if (joueur == 0) {
                 0
@@ -71,7 +72,7 @@ class MorpionActivity: AppCompatActivity()
             tourDeJeu()
         }
 
-        button4.setOnClickListener{
+        button4.setOnClickListener {
             it.setBackgroundResource(imgJoueur[joueur])
             case4 = if (joueur == 0) {
                 0
@@ -82,7 +83,7 @@ class MorpionActivity: AppCompatActivity()
             tourDeJeu()
         }
 
-        button5.setOnClickListener{
+        button5.setOnClickListener {
             it.setBackgroundResource(imgJoueur[joueur])
             case5 = if (joueur == 0) {
                 0
@@ -93,7 +94,7 @@ class MorpionActivity: AppCompatActivity()
             tourDeJeu()
         }
 
-        button6.setOnClickListener{
+        button6.setOnClickListener {
             it.setBackgroundResource(imgJoueur[joueur])
             case6 = if (joueur == 0) {
                 0
@@ -104,7 +105,7 @@ class MorpionActivity: AppCompatActivity()
             tourDeJeu()
         }
 
-        button7.setOnClickListener{
+        button7.setOnClickListener {
             it.setBackgroundResource(imgJoueur[joueur])
             case7 = if (joueur == 0) {
                 0
@@ -115,7 +116,7 @@ class MorpionActivity: AppCompatActivity()
             tourDeJeu()
         }
 
-        button8.setOnClickListener{
+        button8.setOnClickListener {
             it.setBackgroundResource(imgJoueur[joueur])
             case8 = if (joueur == 0) {
                 0
@@ -126,7 +127,7 @@ class MorpionActivity: AppCompatActivity()
             tourDeJeu()
         }
 
-        button9.setOnClickListener{
+        button9.setOnClickListener {
             it.setBackgroundResource(imgJoueur[joueur])
             case9 = if (joueur == 0) {
                 0
@@ -143,19 +144,17 @@ class MorpionActivity: AppCompatActivity()
         }
 
     }
-
-    private fun tourDeJeu()
-    {
+    @SuppressLint("SetTextI18n")
+    private fun tourDeJeu() {
         checkWin()
-        if (nbTour%2 == 0)
-        {
+        if (nbTour % 2 == 0) {
             joueur = 0
-            nomJoueur = nomJoueur1
-        }
-        else
-        {
+            nomJoueur = joueur1.toString()
+            auTourDe.text = "It's your turn to play $nomJoueur"
+        } else {
             joueur = 1
-            nomJoueur = nomJoueur2
+            nomJoueur = joueur2.toString()
+            auTourDe.text = "It's your turn to play $nomJoueur"
         }
         nbTour++
     }
@@ -169,8 +168,7 @@ class MorpionActivity: AppCompatActivity()
     }
 
     @SuppressLint("SetTextI18n")
-    fun checkWin()
-    {
+    fun checkWin() {
         if (
             case1 == 0 && case2 == 0 && case3 == 0 || case1 == 1 && case2 == 1 && case3 == 1 ||
             case1 == 0 && case4 == 0 && case7 == 0 || case1 == 1 && case4 == 1 && case7 == 1 ||
@@ -180,8 +178,7 @@ class MorpionActivity: AppCompatActivity()
             case3 == 0 && case5 == 0 && case7 == 0 || case3 == 1 && case5 == 1 && case7 == 1 ||
             case4 == 0 && case5 == 0 && case6 == 0 || case4 == 1 && case5 == 1 && case6 == 1 ||
             case7 == 0 && case8 == 0 && case9 == 0 || case7 == 1 && case8 == 1 && case9 == 1
-           )
-        {
+        ) {
             boutonRelancer.toggleVisibility()
             button.isEnabled = false
             button2.isEnabled = false
@@ -193,9 +190,8 @@ class MorpionActivity: AppCompatActivity()
             button8.isEnabled = false
             button9.isEnabled = false
 
-            auTourDe.text = "$nomJoueur vous avez gagner"
+            auTourDe.setText("$nomJoueur won !")
+
         }
     }
-
-
 }
