@@ -3,7 +3,10 @@ package com.muller.minijeux
 import android.annotation.SuppressLint
 import android.util.Log
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import kotlinx.android.synthetic.main.home.*
 import kotlinx.android.synthetic.main.morpion.*
 
 class MorpionActivity: AppCompatActivity()
@@ -42,7 +45,7 @@ class MorpionActivity: AppCompatActivity()
             } else {
                 1
             }
-
+            it.isEnabled = false
             tourDeJeu()
         }
 
@@ -53,6 +56,7 @@ class MorpionActivity: AppCompatActivity()
             } else {
                 1
             }
+            it.isEnabled = false
             tourDeJeu()
         }
 
@@ -63,6 +67,7 @@ class MorpionActivity: AppCompatActivity()
             } else {
                 1
             }
+            it.isEnabled = false
             tourDeJeu()
         }
 
@@ -73,6 +78,7 @@ class MorpionActivity: AppCompatActivity()
             } else {
                 1
             }
+            it.isEnabled = false
             tourDeJeu()
         }
 
@@ -83,6 +89,7 @@ class MorpionActivity: AppCompatActivity()
             } else {
                 1
             }
+            it.isEnabled = false
             tourDeJeu()
         }
 
@@ -93,6 +100,7 @@ class MorpionActivity: AppCompatActivity()
             } else {
                 1
             }
+            it.isEnabled = false
             tourDeJeu()
         }
 
@@ -103,6 +111,7 @@ class MorpionActivity: AppCompatActivity()
             } else {
                 1
             }
+            it.isEnabled = false
             tourDeJeu()
         }
 
@@ -113,6 +122,7 @@ class MorpionActivity: AppCompatActivity()
             } else {
                 1
             }
+            it.isEnabled = false
             tourDeJeu()
         }
 
@@ -123,8 +133,10 @@ class MorpionActivity: AppCompatActivity()
             } else {
                 1
             }
+            it.isEnabled = false
             tourDeJeu()
         }
+
 
         boutonRelancer.setOnClickListener {
             recreate()
@@ -148,17 +160,40 @@ class MorpionActivity: AppCompatActivity()
         nbTour++
     }
 
+    fun Button.toggleVisibility() {
+        if (visibility == Button.VISIBLE) {
+            visibility = Button.INVISIBLE
+        } else {
+            visibility = Button.VISIBLE
+        }
+    }
+
     @SuppressLint("SetTextI18n")
     fun checkWin()
     {
-        if (case1 == 0 && case2 == 0 && case3 == 0 || case1 == 1 && case2 == 1 && case3 == 1 ||
+        if (
+            case1 == 0 && case2 == 0 && case3 == 0 || case1 == 1 && case2 == 1 && case3 == 1 ||
             case1 == 0 && case4 == 0 && case7 == 0 || case1 == 1 && case4 == 1 && case7 == 1 ||
             case1 == 0 && case5 == 0 && case9 == 0 || case1 == 1 && case5 == 1 && case9 == 1 ||
             case2 == 0 && case5 == 0 && case8 == 0 || case2 == 1 && case5 == 1 && case8 == 1 ||
             case3 == 0 && case6 == 0 && case9 == 0 || case3 == 1 && case6 == 1 && case9 == 1 ||
-            case3 == 0 && case5 == 0 && case7 == 0 || case3 == 1 && case5 == 1 && case7 == 1)
+            case3 == 0 && case5 == 0 && case7 == 0 || case3 == 1 && case5 == 1 && case7 == 1 ||
+            case4 == 0 && case5 == 0 && case6 == 0 || case4 == 1 && case5 == 1 && case6 == 1 ||
+            case7 == 0 && case8 == 0 && case9 == 0 || case7 == 1 && case8 == 1 && case9 == 1
+           )
         {
-            auTourDe.text = nomJoueur + " vous avez gagner"
+            boutonRelancer.toggleVisibility()
+            button.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
+
+            auTourDe.text = "$nomJoueur vous avez gagner"
         }
     }
 

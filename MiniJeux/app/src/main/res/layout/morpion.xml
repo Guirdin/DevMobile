@@ -187,6 +187,7 @@
 
             <Button
                 android:id="@+id/boutonRelancer"
+                android:visibility="invisible"
                 android:layout_width="166dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
